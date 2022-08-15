@@ -1,0 +1,67 @@
+#!/usr/bin/python
+
+zerobyte = False
+nokeyfile = False
+
+import sys
+if len(sys.argv) == 4:
+    kfile = sys.argv[1]
+    if(sys.argv[1] == '-k'):
+        print("got key but wrong args: optind=3 argc=4")
+        print("usage: python vencrypt [keyfile | -k key] plaintextfile ciphertextfile")
+        sys.exit(3)
+    enfile = sys.argv[2]
+    pfile = sys.argv[3]
+elif len(sys.argv) == 5:
+    if(sys.argv[1] != '-k'):
+        print("invalid option -" + sys.argv[1])
+        sys.exit(3)
+    kfile = sys.argv[2]
+    enfile = sys.argv[3]
+    pfile = sys.argv[4]
+    lines = kfile
+    nokeyfile = True
+else:
+    print("usage: python vencrypt [keyfile | -k key] ciphertextfile plaintextfile")
+    sys.exit(3)
+
+if nokeyfile == False:
+    try:
+        with open(kfile) as f:
+            lines = f.read()
+        if not lines:
+            print("empty key file")
+            sys.exit(3)
+    except:
+        print("cannot open key file " + kfile)
+        sys.exit(3)
+
+print("keyfile=" + kfile + ", length=" + str(len(lines)))
+
+try:
+    with open(enfile) as f:
+        encrypttext= f.read()
+        if not encrypttext:
+            zerobyte = True
+            encryption = ''
+except:
+    print("./vdecrypt: cannot open ciphertext file for reading " + '"' + enfile + '"' )
+    sys.exit(3)
+
+
+if(zerobyte == False):       
+    i = 0
+    j = 1
+    encryption = ''
+    keylength = len(lines)
+    while(i < len(encrypttext)):
+        hex = ((ord(encrypttext[i]) - ord(lines[j - 1]) + 256) % 256)
+        encryption = encryption + chr(hex)
+        i,j = i+ 1, j + 1
+        if(j>keylength):j = 1
+
+w = open(pfile,"w+")
+n = w.write(encryption)
+w.close()
+
+

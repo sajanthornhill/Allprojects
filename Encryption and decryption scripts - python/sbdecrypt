@@ -1,0 +1,142 @@
+#!/usr/bin/python
+import sys
+if(len(sys.argv) == 4):
+    password = sys.argv[1]
+    pfile = sys.argv[2]
+    cfile = sys.argv[3]
+else:
+    print("usage: ./scrypt [-d] password plaintextfile ciphertextfile")
+    sys.exit(3)
+
+arr = []
+cbc = []
+blocksize = 16
+startIndex = 0
+endIndex = 15
+currentBlock = []
+lastBlock = []
+iv = []
+
+try:
+    with open(pfile) as f:
+        plaintext= f.read()
+except:
+    print("./sbencrypt: cannot open ciphertext file for reading " + '"' + pfile + '"')
+    sys.exit(3)
+
+def lcg ():
+    a = 1103515245
+    c = 12345
+    m = 256
+    global rand
+    rand = (a*rand + c) % m
+    return rand
+
+def sdbm(password):
+    hash = 0
+    for chr in password:
+        hash = ord(chr) + (hash << 6) + (hash << 16) - hash
+    return hash
+
+def swap(list, pos1, pos2):
+    list[pos1], list[pos2] = list[pos2], list[pos1]
+    return list
+
+
+def cipherBlockSwap(current, keystream):
+    for i in range(len(current)):
+        binary = keystream[i]
+        binarynum = format(binary, '08b')
+        first = int(binarynum[0:4], 2)
+        second = int(binarynum[4:8], 2)
+        array1= swap(array1,second,first)
+
+def cipherchaining(current, keystream):
+    tempblock = []
+    for i in range(blocksize):
+        xor = keystream[i] ^ current[i]
+        tempblock.append(xor)
+    return tempblock
+
+def keystreamer():
+    keystream = []
+    for i in range(blocksize):
+        keystream.append(lcg())
+    return keystream
+
+def shuffle(current,keystream):
+    for i in reversed(keystream):
+        binary = i
+        binarynum = format(binary, '08b')
+        first = int(binarynum[0:4], 2)
+        second = int(binarynum[4:8], 2)
+        current = swap(current,second,first)
+    return current
+
+def lastXOR(array, keystream):
+    tester = ''
+    tempArray = []
+    for i in range(blocksize):
+        xor = keystream[i] ^ array[i]
+        tempArray.append(xor)
+        tester = tester + chr(xor)
+    return tester, tempArray
+#Start
+rand = sdbm(password)
+print("using seed=" + str(rand) + " from password=" + '"' + password + '"')
+
+for i in range(blocksize):
+    iv.append(lcg())
+
+for x in plaintext:
+    arr.append(ord(x))
+
+numBlocks = len(arr)/16 
+firstBlock = True
+endBlock = False
+endString = ''
+
+while(numBlocks != 0):
+    if(numBlocks == 1): endBlock = True
+    for x in arr[startIndex:endIndex + 1]:
+        currentBlock.append(x)
+    startIndex = endIndex + 1
+    endIndex = endIndex + 16
+    if(firstBlock == True):
+        keystream = keystreamer()
+        temp = cipherchaining(currentBlock, keystream)
+        temp = shuffle(temp, keystream)
+        result = lastXOR(temp, iv)
+        lastBlock = currentBlock
+        firstBlock = False
+
+    else:
+        keystream = keystreamer()
+        temp = cipherchaining(currentBlock, keystream)
+        temp = shuffle(temp, keystream)
+        result = lastXOR(temp, lastBlock)
+        lastBlock = currentBlock
+    if(endBlock == True):
+        lastString = result[0]
+        paddedValue = lastString[15]
+        index = lastString.index(paddedValue)
+        paddedRemoved = lastString[0:index]
+        endString = endString + paddedRemoved
+        lastBlock = result[1]
+    else:
+        endString = endString + result[0]
+    currentBlock =[]
+    numBlocks = numBlocks - 1
+
+
+
+
+w = open(cfile,"w+")
+n = w.write(endString)
+w.close()
+
+#int(binarynum[0:4], 2)
+
+
+
+

@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Rutgers Cafe</string>
+    <string name="Main_menu">Main Menu</string>
+    <string name="Order_coffee">Order Coffee</string>
+    <string name="Order_details">Order Details</string>
+    <string name="Store_Orders">Store Orders</string>
+    <string name="todo">TODO</string>
+    <string name="Select_donut_quantity">Select Quantity</string>
+    <string name="select_size">Select Size</string>
+    <string name="select_quantity">Select Quantity</string>
+    <string name="submit_coffee">Submit Coffee</string>
+    <string name="textview">$0.00</string>
+    <string name = "Tax">Tax</string>
+    <string name = "SubTotal">Subtotal</string>
+    <string name = "Your_Order">Your Order</string>
+    <string name = "Zero_Ammount">$0.00</string>
+    <string name = "Place_Order">Place Order</string>
+    <string name = "Cancel_Order">Cancel Order</string>
+    <string name = "Total">Total</string>
+    <string name="Order_donuts">Order Donuts</string>
+    <string name="Donut_Flavor_To_Be_Filled">Donut Flavor</string>
+    <string name="Add_To_Order">Add to Order</string>
+    <string name="order_donuts">Order Donuts</string>
+    <string name="_0_00">$0.00</string>
+  //  @string/Order_coffee
+    <string-array name="Sizes">
+        <item>No size</item>
+        <item>Short</item>
+        <item>Tall</item>
+        <item>Grande</item>
+        <item>Vente</item>
+    </string-array>
+
+    <string-array name="Quantity">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <string-array name="addInsQuantity">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+</resources>

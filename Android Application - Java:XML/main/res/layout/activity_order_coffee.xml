@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:background="#D3F4F4F1"
+    android:backgroundTint="#85FFC107"
+    android:orientation="vertical"
+    tools:context=".OrderCoffeeActivity">
+
+
+    <Spinner
+        android:id="@+id/spinnerSize"
+        android:layout_width="167dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="80dp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerQuantity"
+        android:layout_width="122dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="80dp"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="108dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="224dp"
+        android:text="@string/select_size"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="122dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="204dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/select_quantity"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/AddInsListView"
+        android:layout_width="157dp"
+        android:layout_height="262dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="156dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerSyrupQuantity"
+        android:layout_width="112dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/AddInsListView"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerQuantity" />
+
+    <Spinner
+        android:id="@+id/spinnerCreamQuantity"
+        android:layout_width="112dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/AddInsListView"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerSyrupQuantity" />
+
+    <Spinner
+        android:id="@+id/spinnerWCQuantity"
+        android:layout_width="112dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/AddInsListView"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCreamQuantity" />
+
+    <Spinner
+        android:id="@+id/spinnerCaramelQuantity"
+        android:layout_width="112dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/AddInsListView"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerWCQuantity" />
+
+    <Spinner
+        android:id="@+id/spinnerMilkQuantity"
+        android:layout_width="112dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/AddInsListView"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCaramelQuantity" />
+
+    <Button
+        android:id="@+id/submitCoffeeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="120dp"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="#C85C5C"
+        android:text="@string/submit_coffee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/totalTextView"
+        android:layout_width="123dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="64dp"
+        android:background="#FFFFFF"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/textview"
+        android:textAlignment="gravity"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerMilkQuantity" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
