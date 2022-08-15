@@ -1,0 +1,17 @@
+The goal of this assignment is for you to familiarize yourself with the Java version of pcap. You will create a small program that counts packets and keeps track of the sizes of the packets. Following the instructions below, you will extended a program called App.java to count the packet types. The goal is to make sure you have the development environment working for the Wireshark 2 project.
+
+You will work individually on this assignment. 
+
+App.java accepts a file in the pcap format, which is generated with the tcpdump, wireshark, or tshark  commands.  The report is an example of simple packet analysis, for example, detecting possible port-scanners and attacks on a set of local IP addresses. 
+Given a pcap file as input, App.java program prints out the following contents. The contents of each section will be:  
+
+The number of all packets, which includes all types. 
+The number of UDP packets seen in the file. 
+The number of TCP packets seen in the file.
+The total bandwidth of the packet trace. That is, the total number of bytes seen divided by the total elapsed time. The bandwidth includes all the headers as well as data. 
+The header strings for each section are:
+
+"Total number of packets,<COUNT>", where <count> is an integer.
+"Total number of UDP packets,<COUNT>", where count is an integer
+"Total number of TCP packets,<COUNT>", where count is an integer
+"Total bandwidth of the packet trace in Mbps,<Bandwidth>", where bandwidth is a floating point number of the megabits per second of the trace.
