@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-// Read the full article https://dev.to/mateuszjarzyna/build-your-own-http-server-in-java-in-less-than-one-hour-only-get-method-2k02
+
 public class HTTPChatServer {
     static int cookieCount = 0;
     static ArrayList < String > usernamesStored = new ArrayList < String > ();
